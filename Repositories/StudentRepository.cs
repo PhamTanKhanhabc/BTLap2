@@ -39,7 +39,7 @@ public class StudentRepository : IStudentRepository
     {
         using var db = NewConnection();
         db.Execute(
-            "INSERT INTO Students (Name, Age) VALUES (@Name, @Age)",
+            "INSERT INTO Students (Name, Age, Email) VALUES (@Name, @Age, @Email)",
             student);
     }
 
@@ -48,7 +48,7 @@ public class StudentRepository : IStudentRepository
     {
         using var db = NewConnection();
         db.Execute(
-            "UPDATE Students SET Name=@Name, Age=@Age WHERE Id=@Id",
+            "UPDATE Students SET Name=@Name, Age=@Age, Email=@Email WHERE Id=@Id",
             student);
     }
 

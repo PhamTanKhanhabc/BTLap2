@@ -22,6 +22,15 @@ namespace DapperApi.Controllers
             return Ok(_repo.GetAll());
         }
 
+        [HttpGet("search")]
+        public IActionResult Search([FromQuery] string name)
+        {
+            var students = _repo.GetAll()
+                                .Where(s => s.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+
+            return Ok(students);
+        }
+
         // GET /api/students/1
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
