@@ -67,3 +67,4 @@ C:\Users\user\DapperApi\obj\Debug\net10.0\refint\DapperApi.dll
 C:\Users\user\DapperApi\obj\Debug\net10.0\DapperApi.pdb
 C:\Users\user\DapperApi\obj\Debug\net10.0\DapperApi.genruntimeconfig.cache
 C:\Users\user\DapperApi\obj\Debug\net10.0\ref\DapperApi.dll
+C:\Users\user\DapperApi\obj\Debug\net10.0\DapperApi.sourcelink.json
