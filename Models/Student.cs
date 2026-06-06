@@ -5,5 +5,8 @@ namespace DapperApi.Models
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public int Age { get; set; }
+        
+        // Thêm Email
+        public string Email { get; set; } = string.Empty;
     }
 }
