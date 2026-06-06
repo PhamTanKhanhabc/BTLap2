@@ -60,4 +60,34 @@ public class StudentRepository : IStudentRepository
             "DELETE FROM Students WHERE Id=@Id",
             new { Id = id });
     }
+    public IEnumerable<StudentWithCourses> GetAllWithCourses()
+    {
+        var sql = @"
+            SELECT s.Id, s.Name, c.Id, c.CourseName
+            FROM Students s
+            JOIN StudentCourses sc ON s.Id = sc.StudentId
+            JOIN Courses c ON sc.CourseId = c.Id
+            ORDER BY s.Id";
+
+        using var db = NewConnection();
+
+        var dict = new Dictionary<int, StudentWithCourses>();
+
+        db.Query<StudentWithCourses, Course, StudentWithCourses>(
+            sql,
+            (student, course) =>
+            {
+                if (!dict.TryGetValue(student.Id, out var existing))
+                {
+                    existing = student;
+                    dict[student.Id] = existing;
+                }
+                existing.Courses.Add(course);
+                return existing;
+            },
+            splitOn: "Id"
+        );
+
+        return dict.Values;
+    }
 }

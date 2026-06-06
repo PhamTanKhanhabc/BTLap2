@@ -10,5 +10,7 @@ namespace DapperApi.Repositories
         void Create(Student student);
         void Update(Student student);
         void Delete(int id);
+
+        IEnumerable<StudentWithCourses> GetAllWithCourses();
     }
 }

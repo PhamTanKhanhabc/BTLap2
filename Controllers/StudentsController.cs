@@ -62,5 +62,10 @@ namespace DapperApi.Controllers
             _repo.Delete(id);
             return NoContent();
         }
+        [HttpGet("courses")]
+        public IActionResult GetAllWithCourses()
+        {
+            return Ok(_repo.GetAllWithCourses());
+        }
     }
 }
